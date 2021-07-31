@@ -20,4 +20,5 @@ Route::get('/', function () {
 
 Route::get('/index', [TodoController::class, "index"]);
 Route::get('/create', [TodoController::class, "create"]);
+Route::post('/upload', [TodoController::class, "upload"]);
 Route::get('/edit', [TodoController::class, "edit"]);
