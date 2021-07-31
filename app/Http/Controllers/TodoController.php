@@ -9,7 +9,8 @@ class TodoController extends Controller
 {
     //
     public function index(){
-        return 'hii';
+        $todos = Todo::all();
+        return view('todo.index')->with(['todos' => $todos]);
     }
 
     public function create(){
@@ -17,8 +18,12 @@ class TodoController extends Controller
     }
 
     public function upload(Request $request){
+        $request->validate([
+            'title' => 'required|max:255'
+        ]);
         $todo = $request->title;
         Todo::create(['title' => $todo]);
+        return redirect()->back()->with('success', "TODO created successfully!");
     }
 
     public function edit(){

@@ -8,6 +8,9 @@
 </head>
 <body>
     <h1>Create Your TODO</h1>
+    <h3>
+        <x-alert></x-alert>
+    </h3>
     <form action="/upload" method="post">
         @csrf
         <input type="text" name="title" id="">
