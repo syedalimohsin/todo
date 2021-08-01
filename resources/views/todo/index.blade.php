@@ -8,9 +8,11 @@
 </head>
 <body>
     <h1>All your TODOs</h1>
+    <h3> <a href="/create">Create More Todo</a></h3>
     @foreach ($todos as $todo)
     <li>
         {{ $todo->title }}
+        <a href="{{ asset('/'.$todo->id.'/edit') }}">Edit</a>
     </li>
     @endforeach
 </body>
