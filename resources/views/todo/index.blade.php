@@ -9,10 +9,19 @@
 <body>
     <h1>All your TODOs</h1>
     <h3> <a href="/create">Create More Todo</a></h3>
+    <h3>
+        <x-alert />
+    </h3>
     @foreach ($todos as $todo)
     <li>
-        {{ $todo->title }}
+        @if ($todo->completed)
+            <span style="text-decoration: line-through">{{ $todo->title }}</span>
+        @else
+            {{ $todo->title }}
+        @endif
         <a href="{{ asset('/'.$todo->id.'/edit') }}">Edit</a>
+        <a href="{{ asset('/'.$todo->id.'/completed') }}">Completed</a>
+        <a href="{{ asset('/'.$todo->id.'/delete') }}">Delete</a>
     </li>
     @endforeach
 </body>

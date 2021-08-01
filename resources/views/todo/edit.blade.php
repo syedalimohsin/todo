@@ -9,7 +9,7 @@
 <body>
     <h1>Edit Your TODO</h1>
     <h3>
-        <x-alert></x-alert>
+        <x-alert />
     </h3>
     <form action="/update" method="post">
         @csrf

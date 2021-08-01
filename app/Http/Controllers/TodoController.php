@@ -9,7 +9,7 @@ class TodoController extends Controller
 {
     //
     public function index(){
-        $todos = Todo::all();
+        $todos = Todo::orderBy('completed')->get();
         return view('todo.index')->with(['todos' => $todos]);
     }
 
@@ -39,4 +39,25 @@ class TodoController extends Controller
         $updatetodo->update(['title' => $request->title]);
         return redirect('/index')->with('success', "TODO created successfully!");
     }
+
+    public function completed($id){
+        $todo = Todo::find($id);
+        if ($todo->completed){
+            $todo->update(['completed' => false]);
+            return redirect()->back()->with('success', "TODO marked as incomplete!");
+        }else{
+            $todo->update(['completed' => true]);
+            return redirect()->back()->with('success', "TODO marked as complete!");
+        }
+    }
+
+    public function delete($id){
+
+        $todo = Todo::find($id)->delete();
+        // $deletetodo->delete(['title' => $request->title]);
+        return redirect('/index')->with('success', "TODO has deleted successfully!");
+
+    }
+
+    
 }
