@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,6 @@ Route::get('/{id}/edit', [TodoController::class, "edit"]);
 Route::patch('/update', [TodoController::class, "update"]);
 Route::get('/{id}/completed', [TodoController::class, "completed"]);
 Route::get('/{id}/delete', [TodoController::class, "delete"]);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
